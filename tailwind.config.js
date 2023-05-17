@@ -12,7 +12,11 @@ module.exports = {
 			},
 			height: {
 				'screen': '100dvh',
-			}
+			},
+			colors: {
+				primary: '#0D8C89',
+				secondary: '#003542',
+			},
 		},
 	},
 	plugins: [],
