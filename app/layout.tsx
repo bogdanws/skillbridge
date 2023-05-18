@@ -1,4 +1,5 @@
 import './globals.css'
+import SessionProvider from "./SessionProvider";
 import {Inter} from 'next/font/google'
 import Navbar from "@/components/navbar/NavBar";
 import Footer from "@/app/Footer";
@@ -14,9 +15,11 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html lang="en">
 		<body className={inter.className}>
-			<Navbar/>
-			{children}
-			{/*<Footer/>*/}
+			<SessionProvider session={null}>
+				<Navbar/>
+				{children}
+				{/*<Footer/>*/}
+			</SessionProvider>
 		</body>
 		</html>
 	)
