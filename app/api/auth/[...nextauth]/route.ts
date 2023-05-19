@@ -10,20 +10,20 @@ const options: NextAuthOptions = {
 	adapter: PrismaAdapter(prisma),
 	providers: [
 		GoogleProvider({
-			clientId: process.env.GOOGLE_ID ?? console.error("Missing GOOGLE_ID env variable")!,
-			clientSecret: process.env.GOOGLE_SECRET ?? console.error("Missing GOOGLE_SECRET env variable")!,
+			clientId: process.env.GOOGLE_ID!,
+			clientSecret: process.env.GOOGLE_SECRET!,
 			allowDangerousEmailAccountLinking: true
 		}),
 		GithubProvider({
-			clientId: process.env.GITHUB_ID ?? console.error("Missing GITHUB_ID env variable")!,
-			clientSecret: process.env.GITHUB_SECRET ?? console.error("Missing GITHUB_SECRET env variable")!,
+			clientId: process.env.GITHUB_ID!,
+			clientSecret: process.env.GITHUB_SECRET!,
 			allowDangerousEmailAccountLinking: true
 		}),
 	],
 	theme: {
 		logo: "/logo.png",
 		colorScheme: "light",
-		brandColor: "#0D8C89",
+		brandColor: "#0D8C89"
 	}
 }
 
