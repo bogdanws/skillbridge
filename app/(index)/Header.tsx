@@ -1,6 +1,6 @@
-import Button from "@/components/Button";
 import Image from "next/image";
 import header_photo from "@/public/Header_bg.svg";
+import {GetStarted, LearnMore} from "@/app/(index)/Buttons";
 
 export default function Header() {
     return <div className={'relative h-[30vh] md:h-[90vh] border-2 border-gray m-4'}>
@@ -9,8 +9,8 @@ export default function Header() {
             <h1 className={'font-bold text-2xl md:text-5xl '}>Learn everything from experts</h1>
             <p className={'md:text-4xl'}>Get access to 1-on-1 lessons on your favorite subjects</p>
             <div className={'flex md:m-10 '}>
-                <Button fill className={'shadow-lg md:p-5 md:m-10 md:text-2xl'}>Get Started</Button>
-                <Button className={'hidden md:block md:p-5 md:m-10 md:text-2xl'}>Learn More</Button>
+                <GetStarted/>
+                <LearnMore/>
             </div>
         </div>
     </div>

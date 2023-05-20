@@ -1,7 +1,5 @@
 "use client";
 
-import {MouseEventHandler} from "react";
-
 export default function Button({ children, fill, className, onClick }: {
     children: string | React.ReactNode,
     fill?: boolean,
