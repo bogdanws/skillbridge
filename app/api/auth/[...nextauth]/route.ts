@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from 'next-auth/providers/github';
+import EmailProvider from 'next-auth/providers/email';
 import type {NextAuthOptions} from "next-auth";
 
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
@@ -19,11 +20,27 @@ const options: NextAuthOptions = {
 			clientSecret: process.env.GITHUB_SECRET!,
 			allowDangerousEmailAccountLinking: true
 		}),
+		EmailProvider({
+			server: {
+				host: process.env.EMAIL_SERVER!,
+				port: Number(process.env.EMAIL_PORT!),
+				auth: {
+					user: process.env.EMAIL_USERNAME!,
+					pass: process.env.EMAIL_PASSWORD!
+				}
+			},
+			from: process.env.EMAIL_FROM!
+		})
 	],
 	theme: {
 		logo: "/logo.png",
 		colorScheme: "light",
 		brandColor: "#0D8C89"
+	},
+	callbacks: {
+		session: async ({session, user}) => {
+			return session;
+		}
 	}
 }
 
