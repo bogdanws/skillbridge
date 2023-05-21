@@ -1,4 +1,4 @@
-import Title from "@/components/Title";
+import Title from "@/app/(index)/Title";
 import {ContentSlider, ContentSliderItem} from "@/app/(index)/ContentSlider";
 
 export default function ContentView() {
