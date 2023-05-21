@@ -15,15 +15,15 @@ export function GetStarted() {
 	}
 
 	if (status === "loading" || status === "unauthenticated") {
-		return <Button fill className={'shadow-lg md:p-5 md:m-10 md:text-2xl'} onClick={signinHandler}>Get Started</Button>
+		return <Button fill className={'shadow-lg md:p-5 md:m-10 md:text-2xl'} onClick={signinHandler} role="link">Get Started</Button>
 	} else {
-		return <Button fill className={'shadow-lg md:p-5 md:m-10 md:text-2xl'} onClick={dashboardHandler}>Dashboard</Button>
+		return <Button fill className={'shadow-lg md:p-5 md:m-10 md:text-2xl'} onClick={dashboardHandler} role="link">Dashboard</Button>
 	}
 }
 
 export function LearnMore() {
 	function clickHandler() {
-		window.scrollTo({top: window.innerHeight, behavior: 'smooth'});
+		window.scrollTo({top: window.innerHeight * 0.9, behavior: 'smooth'});
 	}
 
 	return <Button className={'hidden md:block md:p-5 md:m-10 md:text-2xl'} onClick={clickHandler}>Learn More</Button>
