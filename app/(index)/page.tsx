@@ -4,6 +4,7 @@ import {Bottom} from "@/app/(index)/Bottom";
 
 export default function Home() {
 	return <>
+		{/* @ts-expect-error Async Server Component */}
 		<Header/>
 		<ContentView/>
 		<Bottom/>
