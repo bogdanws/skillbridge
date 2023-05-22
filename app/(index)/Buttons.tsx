@@ -2,7 +2,7 @@
 import Button from "@/components/Button";
 import {useRouter} from "next/navigation";
 
-export function GetStarted({status}: {status: "authenticated" | "unauthenticated"}) {
+export function GetStarted({status}: {status?: "authenticated" | "unauthenticated"}) {
 	const router = useRouter();
 
 	function signinHandler() {
