@@ -1,10 +1,8 @@
 "use client";
 import Button from "@/components/Button";
-import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 
-export function GetStarted() {
-	const {data: session, status} = useSession();
+export function GetStarted({status}: {status: "authenticated" | "unauthenticated"}) {
 	const router = useRouter();
 
 	function signinHandler() {
@@ -14,10 +12,10 @@ export function GetStarted() {
 		router.push("/dashboard");
 	}
 
-	if (status === "loading" || status === "unauthenticated") {
-		return <Button fill className={'shadow-lg md:p-5 md:m-10 md:text-2xl'} onClick={signinHandler} role="link">Get Started</Button>
-	} else {
+	if (status === "authenticated") {
 		return <Button fill className={'shadow-lg md:p-5 md:m-10 md:text-2xl'} onClick={dashboardHandler} role="link">Dashboard</Button>
+	} else {
+		return <Button fill className={'shadow-lg md:p-5 md:m-10 md:text-2xl'} onClick={signinHandler} role="link">Get Started</Button>
 	}
 }
 
