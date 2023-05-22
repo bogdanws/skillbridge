@@ -8,7 +8,7 @@ export function Bottom() {
             <Image src={header_photo} alt="" className={"w-auto h-full object-contain object-left-bottom"} />
         </div>
         <div className={'absolute flex flex-col justify-center items-center top-0 left-0 right-0 mx-1'}>
-            <p>Connecting aspiring learners with passionate experts for unparalleled growth!</p>
+            <p className={'text-xl md:text-2xl text-right md:text-center'}>Connecting aspiring learners with passionate experts for unparalleled growth!</p>
         </div>
         <div className={'absolute right-5 top-0 bottom-0 flex justify-center flex-col'}>
             <GetStarted/>
