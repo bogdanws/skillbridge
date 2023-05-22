@@ -1,7 +1,6 @@
 import './globals.css'
 import SessionProvider from "./SessionProvider";
 import {Inter} from 'next/font/google'
-import Navbar from "@/components/navbar/NavBar";
 
 const inter = Inter({subsets: ['latin-ext']})
 
@@ -15,7 +14,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 		<html lang="en">
 		<body className={inter.className}>
 			<SessionProvider>
-				<Navbar/>
 				{children}
 			</SessionProvider>
 		</body>

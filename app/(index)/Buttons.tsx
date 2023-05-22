@@ -21,7 +21,7 @@ export function GetStarted({status}: {status: "authenticated" | "unauthenticated
 
 export function LearnMore() {
 	function clickHandler() {
-		window.scrollTo({top: window.innerHeight * 0.9, behavior: 'smooth'});
+		window.scrollTo({top: window.innerHeight, behavior: 'smooth'});
 	}
 
 	return <Button className={'hidden md:block md:p-5 md:m-10 md:text-2xl'} onClick={clickHandler}>Learn More</Button>
