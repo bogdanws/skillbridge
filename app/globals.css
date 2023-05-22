@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 *, *::before, *::after {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 svg {
-    display: inline-block;
-    vertical-align: middle;
+	display: inline-block;
+	vertical-align: middle;
 }

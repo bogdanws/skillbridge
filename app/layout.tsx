@@ -9,13 +9,13 @@ export const metadata = {
 	description: 'SkillBridge is a platform for connecting students and mentors.',
 }
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({children}: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
 		<body className={inter.className}>
-			<SessionProvider>
-				{children}
-			</SessionProvider>
+		<SessionProvider>
+			{children}
+		</SessionProvider>
 		</body>
 		</html>
 	)
