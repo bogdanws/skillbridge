@@ -8,6 +8,6 @@ export default function CourseCard() {
 			<h2 className={"text-lg font-semibold"}>Course Name</h2>
 			<h3 className={"text-md"}>Course Description</h3>
 		</div>
-		<BsFillBookmarkFill/>
+		<BsFillBookmarkFill size={"1.75rem"} className={"text-white bg-primary p-1.5 rounded-lg"}/>
 	</div>
 }
