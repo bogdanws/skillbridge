@@ -9,7 +9,7 @@
 		"build": "next build",
 		"prisma-deploy": "dotenv -e .env.local prisma migrate deploy",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint && tsc --noEmit"
 	},
 	"dependencies": {
 		"@next-auth/prisma-adapter": "^1.0.6",
