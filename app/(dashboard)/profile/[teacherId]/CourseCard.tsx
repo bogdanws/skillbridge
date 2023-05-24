@@ -1,5 +1,3 @@
-import {BsFillBookmarkFill} from "react-icons/bs";
-
 export default function CourseCard() {
 	return <div className={"w-full md:w-96 h-32 bg-white rounded-lg shadow-lg p-4 flex flex-row gap-4 border border-black m-5 mb-0"}>
 		<div className={"h-full w-32 rounded"}
