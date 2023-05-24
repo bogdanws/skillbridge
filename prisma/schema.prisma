@@ -57,6 +57,7 @@ model User {
 
   teacherProfile TeacherProfile?
   classes        Class[]
+  chats          Chat[]
 }
 
 model TeacherProfile {
@@ -79,4 +80,28 @@ model Class {
   teacher   TeacherProfile @relation(fields: [teacherId], references: [id])
   teacherId String
   students  User[]
+
+  stripeProductId String?
+
+  currentMeeting   Meeting? @relation(fields: [currentMeetingId], references: [id])
+  currentMeetingId Int?     @unique
+}
+
+model Meeting {
+  id       Int    @id @default(autoincrement())
+  twilioId String @unique
+
+  chat   Chat?  @relation(fields: [chatId], references: [id])
+  chatId Int?   @unique
+  Class  Class?
+}
+
+model Chat {
+  id       Int    @id @default(autoincrement())
+  twilioId String @unique
+
+  participants User[]
+
+  isMeetingChat Boolean  @default(false)
+  meeting       Meeting?
 }
