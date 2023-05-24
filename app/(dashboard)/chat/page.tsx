@@ -1,5 +1,9 @@
+import ChatPage from './ChatPage';
+import PeopleList from './PeopleList';
+
 export default function Chat() {
-	return <>
-		<h1>Chat</h1>
-	</>
+	return <div className={'h-full flex flex-row'}>
+		<PeopleList/>
+		<ChatPage/>
+	</div>
 }
