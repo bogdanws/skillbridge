@@ -55,7 +55,18 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
+  teacherProfile TeacherProfile?
+  classes        Class[]
+}
+
+model TeacherProfile {
+  id      String  @id @default(cuid())
+  user    User    @relation(fields: [userId], references: [id])
+  userId  String  @unique
   classes Class[]
+
+  stripeAccountId   String?
+  onboardingSuccess Boolean? @default(false)
 }
 
 model Class {
@@ -65,6 +76,7 @@ model Class {
   private     Boolean @default(true)
   price       Int
 
-  teacher   User   @relation(fields: [teacherId], references: [id])
+  teacher   TeacherProfile @relation(fields: [teacherId], references: [id])
   teacherId String
+  students  User[]
 }

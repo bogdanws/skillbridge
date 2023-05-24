@@ -1,4 +1,4 @@
-import {NextAuthOptions} from "next-auth";
+import {NextAuthOptions, DefaultSession} from "next-auth";
 import {PrismaAdapter} from "@next-auth/prisma-adapter";
 import {prisma} from "@/lib/prisma";
 import GoogleProvider from "next-auth/providers/google";
@@ -35,4 +35,18 @@ export const authOptions: NextAuthOptions = {
 		colorScheme: "light",
 		brandColor: "#0D8C89"
 	},
+	callbacks: {
+		session({session, user}) {
+			session!.user!.id = user.id;
+			return session;
+		}
+	}
+}
+
+declare module "next-auth" {
+	interface Session extends DefaultSession {
+		user: {
+			id: string
+		}
+	}
 }
