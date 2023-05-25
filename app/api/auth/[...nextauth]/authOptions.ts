@@ -27,7 +27,7 @@ export const authOptions: NextAuthOptions = {
 					pass: process.env.EMAIL_PASSWORD!
 				}
 			},
-			from: process.env.EMAIL_FROM!
+			from: process.env.EMAIL_FROM!,
 		})
 	],
 	theme: {

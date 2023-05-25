@@ -35,7 +35,7 @@ export default function Drawer() {
 
 	return <div
 		className={'h-16 md:w-20 w-full md:h-full z-10 flex flex-row md:flex-col justify-center ' +
-			'max-md:border-t md:border-r border-black rounded'}>
+			'max-md:border-t md:border-r border-black rounded bg-white'}>
 		{routes.map((route) =>
 			<NavButton key={route.path} path={route.path} label={route.label} active={active(route.path)}>
 				{route.icon}

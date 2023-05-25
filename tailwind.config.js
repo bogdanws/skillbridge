@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const theme = require("tailwindcss/defaultTheme");
 module.exports = {
 	content: [
 		'./pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,6 +11,12 @@ module.exports = {
 			width: {
 				'screen': '100dvw',
 			},
+			minHeight: (theme) => ({
+				...theme('spacing'),
+			}),
+			maxHeight: (theme) => ({
+				...theme('spacing'),
+			}),
 			height: {
 				'screen': '100dvh',
 			},
@@ -17,8 +24,9 @@ module.exports = {
 				primary: {
 					DEFAULT: "#0D8C89",
 					50: "#DEFCFB",
-					100: "#B9F8F7",
-					200: "#44EEEB",
+					100: "#abf1f0",
+					150: "#9be7e6",
+					200: "#42d7d3",
 					300: "#14D2CF",
 					400: "#11B6B3",
 					500: "#0D8C89",

@@ -3,6 +3,7 @@ import {authOptions} from "@/app/api/auth/[...nextauth]/authOptions";
 import {prisma} from "@/lib/prisma";
 import PersonalInfo from "@/app/(dashboard)/profile/PersonalInfo";
 import TeacherProfile, {OnboardTeacherProfile} from "@/app/(dashboard)/profile/TeacherProfile";
+import LogOut from "@/app/(dashboard)/profile/LogOut";
 
 export default async function Profile() {
 	const session = (await getServerSession(authOptions))!;
@@ -27,5 +28,6 @@ export default async function Profile() {
 		<PersonalInfo user={user} />
 		{user.teacherProfile?.onboardingSuccess && <TeacherProfile teacher={user.teacherProfile} /> }
 		{!user.teacherProfile?.onboardingSuccess && <OnboardTeacherProfile /> }
+		<LogOut/>
 	</div>
 }
