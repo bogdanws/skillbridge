@@ -1,7 +1,7 @@
 "use client";
 import ActionBar from "@/app/join/[roomId]/ActionBar";
 import VideoChat from "@/app/join/[roomId]/VideoChat";
-import {useState, useEffect, useCallback, useRef} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import * as Video from 'twilio-video';
 
 export default function VideoPage({roomId}: {roomId: string}) {
@@ -52,21 +52,20 @@ export default function VideoPage({roomId}: {roomId: string}) {
 			});
 		});
 
-		// TODO: Add local video
-		// try {
-		// 	Video.createLocalVideoTrack().then(track => {
-		// 		videoChatRef.current?.appendChild(track.attach());
-		// 	});
-		// } catch (e) {
-		// 	console.log(e);
-		// }
-
 		// TODO: Handle participant video disconnect
 
 		// TODO: Handle participant disconnect
 		room.on('participantDisconnected', participant => {
-			console.log(participant);
+			// remove video elements
+			participant.tracks.forEach(publication => {
+				if (publication.isSubscribed && publication.track?.kind === 'video') {
+					publication.track?.detach().forEach(element => {
+						element.remove();
+					});
+				}
+			});
 		});
+
 		room.on('disconnected', room => {
 			console.log(room);
 		});
@@ -80,8 +79,32 @@ export default function VideoPage({roomId}: {roomId: string}) {
 		getToken();
 	}, [getToken]);
 
+	function showLocalVideo(bool: boolean) {
+		if (bool) {
+			Video.createLocalVideoTrack().then(track => {
+				const attachedTrack = track.attach();
+				attachedTrack.id = 'local-video';
+				videoChatRef?.current?.appendChild(attachedTrack);
+			});
+		} else {
+			console.log(room?.localParticipant);
+			room!.localParticipant.videoTracks.forEach(publication => {
+					if (publication.track) {
+						publication.track.stop();
+						publication.unpublish();
+					}
+				}
+			);
+			// remove id 'local-video' from videoChatRef
+			const localVideo = videoChatRef?.current?.querySelector('#local-video');
+			if (localVideo) {
+				localVideo.remove();
+			}
+		}
+	}
+
 	return <>
-		<ActionBar room={room!}/>
+		<ActionBar room={room!} showLocalVideo={showLocalVideo}/>
 		<VideoChat videoCharRef={videoChatRef}/>
 	</>
 }
