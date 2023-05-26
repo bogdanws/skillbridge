@@ -1,5 +1,5 @@
 "use client";
-import {useState, useEffect, useCallback} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {MessageType} from "@/lib/twilio/chat";
 import {getSession} from "next-auth/react";
 
@@ -25,7 +25,7 @@ export default function ChatWindow({chatId} : {chatId: number}) {
 		fetchMessages();
 		const interval = setInterval(async () => {
 			await fetchMessages();
-		}, 3000);
+		}, 2000);
 
 		return () => clearInterval(interval);
 	}, [chatId, fetchMessages]);

@@ -14,10 +14,10 @@ export function ContentSliderItem({title, author, price, image, rating}: {
 	rating?: number
 }) {
 	return <div className={"flex-shrink-0 w-64 p-3"}>
-		<div className={"bg-white rounded-lg shadow-md overflow-hidden"}>
+		<div className={"bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col"}>
 			<div className={"bg-gray-200 h-40 w-full"}
 			     style={{backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center'}}></div>
-			<div className={"p-4"}>
+			<div className={"p-4 flex flex-col justify-between flex-grow"}>
 				<h3 className={"font-bold text-xl mb-2"}>{title}</h3>
 				{author && <p className={"text-gray-700 text-base"}>{author}</p>}
 				{price && <p className={"text-gray-700 text-base"}>{price}</p>}
