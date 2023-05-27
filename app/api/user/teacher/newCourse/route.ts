@@ -1,6 +1,6 @@
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/authOptions";
-import {NextResponse, NextRequest} from "next/server";
+import {NextRequest, NextResponse} from "next/server";
 import {prisma} from "@/lib/prisma";
 import stripe from "@/lib/stripe";
 
@@ -29,12 +29,12 @@ export async function POST(request: NextRequest) {
 
 	let {name, description, price, image} = await request.json();
 
-	if (!name || !description || !price || !image) {
+	if (!name || !price || !image) {
 		return NextResponse.json({error: "You must fill out all fields."}, {status: 400});
 	}
 
 	try {
-		price = parseInt(price) * 100;
+		price = parseInt(price);
 	} catch (e) {
 		return NextResponse.json({error: "Price must be a number."}, {status: 400});
 	}
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
 	const stripePrice = await stripe.prices.create({
 		product: product.id,
 		currency: 'usd',
-		unit_amount: price,
+		unit_amount: price * 100,
 	}, {
 		stripeAccount: user.teacherProfile.stripeAccountId!
 	});
@@ -73,5 +73,5 @@ export async function POST(request: NextRequest) {
 		}
 	});
 
-	return NextResponse.redirect(process.env.BASE_URL + "/dashboard");
+	return NextResponse.json({course});
 }

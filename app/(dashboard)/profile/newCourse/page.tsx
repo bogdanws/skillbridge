@@ -24,6 +24,9 @@ export default function NewCourse() {
 			error.message ? alert(error.message) : alert('An error occurred');
 
 			return;
+		} else {
+			alert('Course created!');
+			window.location.href = '/dashboard';
 		}
 	}
 
@@ -32,19 +35,19 @@ export default function NewCourse() {
 		<Card>
 			<h2 className={"text-2xl font-semibold mb-3"}>Name & Description</h2>
 			<Label htmlFor="name">Course name</Label>
-			<Input placeholder="Pick a name for your course" name="name" id="name" type="text"/>
+			<Input placeholder="Pick a name for your course" name="name" id="name" type="text" required={true}/>
 			<Label htmlFor="description">Description</Label>
 			<Input placeholder="Add a description" name="description" id="description" type="text"/>
 		</Card>
 		<Card>
 			<h2 className={"text-2xl font-semibold mb-3"}>Course image</h2>
 			<Label htmlFor="image">Image URL</Label>
-			<Input placeholder="Add an image URL" name="image" id="image" type="text"/>
+			<Input placeholder="Add an image URL" name="image" id="image" type="text" required={true}/>
 		</Card>
 		<Card>
 			<h2 className={"text-2xl font-semibold mb-3"}>Price</h2>
 			<Label htmlFor="price">Amount</Label>
-			<Input placeholder="Add a price" name="price" id="price" type="number" min={0}/>
+			<Input placeholder="Add a price" name="price" id="price" type="number" min={0} required={true}/>
 		</Card>
 		<div className={'w-full flex justify-center'}>
 			<Submit className={'w-1/3'}>Create</Submit>
