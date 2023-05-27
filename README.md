@@ -2,6 +2,10 @@
 
 SkillBridge is a web application that helps users bridge the gap between their current skill set and their desired career path by providing an interactive learning environment.
 
+Developers:
+- Gabriela Tudrache - Frontend & Design
+- Bogdan Andreiana - Backend & Frontend
+
 ## Table of Contents
 - [Technologies](#technologies)
 - [Dependencies](#dependencies)
